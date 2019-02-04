@@ -1,6 +1,6 @@
 # Game Engines 2 2018-2019
 
-[![Video](http://img.youtube.com/vi/n3uJ--m3f6Y/0.jpg)](http://www.youtube.com/watch?v=n3uJ--m3f6Y)
+[![Video](http://img.youtube.com/vi/NR-zxfT0fTk/0.jpg)](http://www.youtube.com/watch?NR-zxfT0fTk)
 
 ## Resources
 - [Class Facebook page](https://www.facebook.com/groups/2228012700814097/)
