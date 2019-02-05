@@ -20,6 +20,9 @@ public class Boid : MonoBehaviour
 
     private Vector3 nextWaypoint;
 
+    [Range(0.0f, 1.0f)]
+    public float banking = 0.1f; 
+
     public Path path;
 
     // Start is called before the first frame update
@@ -95,13 +98,14 @@ public class Boid : MonoBehaviour
     void Update()
     {
         force = CalculateForces();
-        acceleration = force / mass;
+        Vector3 acceleration = force / mass;
+        
         velocity += acceleration * Time.deltaTime;
-        transform.position += velocity * Time.deltaTime;
-
+        
         if (velocity.magnitude > float.Epsilon)
         {
             transform.forward = velocity;
-        }
+            transform.position += velocity * Time.deltaTime;
+        }        
     }
 }
