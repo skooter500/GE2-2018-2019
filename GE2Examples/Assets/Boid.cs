@@ -16,6 +16,11 @@ public class Boid : MonoBehaviour
     public bool SeekEnabled = false;
     public bool ArriveEnabled = false;
 
+    public bool FollowPathEnabled = false;
+
+    private Vector3 nextWaypoint;
+
+    public Path path;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +47,24 @@ public class Boid : MonoBehaviour
         return desired - velocity;
     }
 
+    Vector3 FollowPath()
+    {
+        nextWaypoint = path.NextWaypoint();
+        
+        if (!path.looped && path.IsLast())
+        {
+            return Arrive(nextWaypoint);
+        }
+        else
+        {
+            if (Vector3.Distance(transform.position, nextWaypoint) < 3)
+            {
+                path.AdvanceToNext();
+            }
+            return Seek(nextWaypoint);
+        }
+    }
+
     Vector3 CalculateForces()
     {
         Vector3 force = Vector3.zero;
@@ -59,6 +82,12 @@ public class Boid : MonoBehaviour
         {
             force += Arrive(target);
         }
+
+        if (FollowPathEnabled)
+        {
+            force += FollowPath();
+        }
+
         return force;
     }
 
