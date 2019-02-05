@@ -16,6 +16,18 @@ public class Boid : MonoBehaviour
     public bool SeekEnabled = false;
     public bool ArriveEnabled = false;
 
+    public GameObject fleeTarget;
+    public float fleeDistance = 10;
+    public bool FleeEnabled = false;
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, force * 5);
+        Gizmos.DrawRay(transform.position, acceleration * 5);
+
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +35,29 @@ public class Boid : MonoBehaviour
         
     }
 
+
+
     public Vector3 Seek(Vector3 target)
     {
         Vector3 desired = target - transform.position;
         desired.Normalize();
         desired *= maxSpeed;
         return desired - velocity;
+    }
+
+    public Vector3 Flee(Vector3 target)
+    {
+        if (Vector3.Distance(transform.position, target) < fleeDistance)
+        {
+            Vector3 desired = target - transform.position;
+            desired.Normalize();
+            desired *= maxSpeed;
+            return velocity - desired;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
     }
 
     public Vector3 Arrive(Vector3 target)
@@ -49,7 +78,7 @@ public class Boid : MonoBehaviour
         {
             target = targetGameObject.transform.position;
         }
-
+        
         force = Vector3.zero;
         if (SeekEnabled)
         {
@@ -58,6 +87,10 @@ public class Boid : MonoBehaviour
         if (ArriveEnabled)
         {
             force += Arrive(target);
+        }
+        if (FleeEnabled)
+        {
+            force += Flee(fleeTarget.transform.position);
         }
         return force;
     }
