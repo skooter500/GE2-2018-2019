@@ -28,6 +28,14 @@ public class Boid : MonoBehaviour
 
     }
 
+    public bool FollowPathEnabled = false;
+
+    private Vector3 nextWaypoint;
+
+    [Range(0.0f, 1.0f)]
+    public float banking = 0.1f; 
+
+    public Path path;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +79,24 @@ public class Boid : MonoBehaviour
         return desired - velocity;
     }
 
+    Vector3 FollowPath()
+    {
+        nextWaypoint = path.NextWaypoint();
+        
+        if (!path.looped && path.IsLast())
+        {
+            return Arrive(nextWaypoint);
+        }
+        else
+        {
+            if (Vector3.Distance(transform.position, nextWaypoint) < 3)
+            {
+                path.AdvanceToNext();
+            }
+            return Seek(nextWaypoint);
+        }
+    }
+
     Vector3 CalculateForces()
     {
         Vector3 force = Vector3.zero;
@@ -92,6 +118,12 @@ public class Boid : MonoBehaviour
         {
             force += Flee(fleeTarget.transform.position);
         }
+
+        if (FollowPathEnabled)
+        {
+            force += FollowPath();
+        }
+
         return force;
     }
 
@@ -99,13 +131,18 @@ public class Boid : MonoBehaviour
     void Update()
     {
         force = CalculateForces();
-        acceleration = force / mass;
+        Vector3 acceleration = force / mass;
+        
         velocity += acceleration * Time.deltaTime;
-        transform.position += velocity * Time.deltaTime;
 
+        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+
+        
         if (velocity.magnitude > float.Epsilon)
         {
-            transform.forward = velocity;
-        }
+            Vector3 tempUp = Vector3.Lerp(transform.up, Vector3.up + (acceleration * banking), Time.deltaTime * 3.0f);
+            transform.LookAt(transform.position + velocity, tempUp);
+            transform.position += velocity * Time.deltaTime;
+        }        
     }
 }
