@@ -20,6 +20,22 @@ public class Boid : MonoBehaviour
     public float fleeDistance = 10;
     public bool FleeEnabled = false;
 
+    public bool PlayerSteeringEnabled = false;
+    public float playerForce = 100;
+
+    public Vector3 PlayerSteering()
+    {
+        Vector3 force = Vector3.zero;
+
+        Vector3 projectedRight = transform.right;
+        projectedRight.y = 0;
+        projectedRight.Normalize();
+
+        force += Input.GetAxis("Vertical") * transform.forward * playerForce;
+        force += Input.GetAxis("Horizontal") * projectedRight * playerForce * 0.2f;
+        return force;
+    }
+
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -124,6 +140,11 @@ public class Boid : MonoBehaviour
             force += FollowPath();
         }
 
+        if (PlayerSteeringEnabled)
+        {
+            force += PlayerSteering();
+        }
+
         return force;
     }
 
@@ -143,6 +164,9 @@ public class Boid : MonoBehaviour
             Vector3 tempUp = Vector3.Lerp(transform.up, Vector3.up + (acceleration * banking), Time.deltaTime * 3.0f);
             transform.LookAt(transform.position + velocity, tempUp);
             transform.position += velocity * Time.deltaTime;
+            velocity *= (1.0f - (damping * Time.deltaTime));
         }        
     }
+
+    public float damping = 0.01f;
 }

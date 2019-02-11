@@ -479,9 +479,12 @@ MonoBehaviour:
   fleeTarget: {fileID: 0}
   fleeDistance: 10
   FleeEnabled: 0
-  FollowPathEnabled: 1
+  PlayerSteeringEnabled: 1
+  playerForce: 100
+  FollowPathEnabled: 0
   banking: 0.1
   path: {fileID: 762646224}
+  damping: 0.1
 --- !u!65 &1771359193
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -22,12 +22,36 @@
 - Week 10 - Lab Test - 20%
 - Week 12 - CA Submission & Demo - 40%
 
-## Week 2 - Flee, Pursue and OffsetPursue
+## Week 3 - Pursue, Offset pursue & formations.
+- get some art assets to use in your assignment
+- Refactor the code we have been writing to use components
+
+### Task 1
+- Find some 3D models & art assets for your assignment & get them loaded into a scene in Unity
+- Set up a git repo for your assignment
+
+### Task 2
+
+Out Boid class is getting big so now it's time to refactor the code so that each behaviour is a seperate MonoBehaviour.
+
+Clone/pull the repo for the course
+
+- Make an abstract base class called SteeringBehaviour that extends MonoBehavior
+- Add one abstract method ```public abstract Vector3 Calculate()```
+- Add a public field for *weight* of type float and also add a field for the Boid (the owner of the behaviour)
+- Take each of the behaviours we wrote (seek, arrive, flee, path following, PlayerSteering) and make each of them extend SteeringBehaviour. Do the calculation of the force in Calculate
+- Remove the boolean flags for the behaviours. They are not needed any more. Instead each boid will use whatever behaviours are attached to it.
+- Give the Boid a field of type ```SteeringBehaviour[]```
+- In the setup method of the Boid class, call GetComponents to get all the attached SteeringBehaviours
+- Assign the boid field of each attached behaviour
+- In the Boid Update method, iterate over the activated behaviours and sum the generated forces * the weights
+- This will become more useful when we combine the behaviours together
+
+## Week 2 - Flee, Path Following & PlayerSteering
 
 ## Learning Outcomes
 - Learn how to use gizmos
 - Program a path following steering behaviour
-
 
 ### Part 1 - Seek & Arrive
 
