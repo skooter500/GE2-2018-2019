@@ -70,6 +70,7 @@ public class Boid : MonoBehaviour
             if (b.isActiveAndEnabled)
             {
                 Vector3 behaviourForce = b.Calculate() * b.weight;
+
                 force += behaviourForce;
             }
         }
