@@ -463,28 +463,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1771359191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e73891cf7fba2094184ab63b6844ba2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0712854fe705ce94b8a0cb4824a4ea4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
   mass: 1
-  target: {x: 20, y: 0, z: 20}
+  target: {x: 0, y: 0, z: 0}
   maxSpeed: 5
   targetGameObject: {fileID: 0}
-  slowingDistance: 20
+  slowingDistance: 10
   SeekEnabled: 0
   ArriveEnabled: 0
   fleeTarget: {fileID: 0}
   fleeDistance: 10
   FleeEnabled: 0
-  PlayerSteeringEnabled: 1
+  PlayerSteeringEnabled: 0
   playerForce: 100
-  FollowPathEnabled: 0
+  FollowPathEnabled: 1
   banking: 0.1
   path: {fileID: 762646224}
-  damping: 0.1
+  damping: 0.01
 --- !u!65 &1771359193
 BoxCollider:
   m_ObjectHideFlags: 0

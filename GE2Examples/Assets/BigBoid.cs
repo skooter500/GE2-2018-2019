@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boid : MonoBehaviour
+public class BigBoid : MonoBehaviour
 {
     public Vector3 velocity;
     public Vector3 acceleration;
