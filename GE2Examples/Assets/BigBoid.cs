@@ -60,7 +60,6 @@ public class BigBoid : MonoBehaviour
     }
 
 
-
     public Vector3 Seek(Vector3 target)
     {
         Vector3 desired = target - transform.position;
@@ -155,10 +154,8 @@ public class BigBoid : MonoBehaviour
         Vector3 acceleration = force / mass;
         
         velocity += acceleration * Time.deltaTime;
-
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
-        
         if (velocity.magnitude > float.Epsilon)
         {
             Vector3 tempUp = Vector3.Lerp(transform.up, Vector3.up + (acceleration * banking), Time.deltaTime * 3.0f);
