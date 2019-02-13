@@ -65,11 +65,25 @@ public class Boid : MonoBehaviour
     {
         force = Vector3.zero;
 
+        // Weighted prioritised truncated running sum
+        // 1. Behaviours are weighted
+        // 2. Behaviours are prioritised
+        // 3. Truncated
+        // 4. Running sum
+
+
         foreach (SteeringBehaviour b in behaviours)
         {
             if (b.isActiveAndEnabled)
             {
                 force += b.Calculate() * b.weight;
+
+                float f = force.magnitude;
+                if (f >= maxForce)
+                {
+                    force = Vector3.ClampMagnitude(force, maxForce);
+                    break;
+                }               
             }
         }
 
@@ -86,12 +100,12 @@ public class Boid : MonoBehaviour
         velocity += acceleration * Time.deltaTime;
 
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-
-
+        
         if (velocity.magnitude > float.Epsilon)
         {
             Vector3 tempUp = Vector3.Lerp(transform.up, Vector3.up + (acceleration * banking), Time.deltaTime * 3.0f);
             transform.LookAt(transform.position + velocity, tempUp);
+
             transform.position += velocity * Time.deltaTime;
             velocity *= (1.0f - (damping * Time.deltaTime));
         }
