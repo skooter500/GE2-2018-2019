@@ -38,7 +38,10 @@ Create a new scene and make this predator prey simulation. The prey will follow 
 Do some work on your assignment!
 
 ## Week 3 - Pursue, Offset pursue & formations.
-- get some art assets to use in your assignment
+
+## Lab 3
+### Learning Outcomes 
+- Get some art assets to use in your assignment
 - Refactor the code we have been writing to use components
 
 ### Lab
@@ -69,7 +72,8 @@ Clone/pull the repo for the course
 
 ## Learning Outcomes
 - Learn how to use gizmos
-- Program a path following steering behaviour
+- Know how to program a path following steering behaviour
+- Know how to program a flee behaviour
 
 ### Part 1 - Seek & Arrive
 
