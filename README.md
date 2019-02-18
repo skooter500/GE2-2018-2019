@@ -22,9 +22,27 @@
 - Week 10 - Lab Test - 20%
 - Week 12 - CA Submission & Demo - 40%
 
+## Week 4 - Wandering behaviours
+
+# Lab
+
+Clone the repository for the course and create a seperate branch for your work today
+
+## Part 1
+Create a new scene and make this predator prey simulation. The prey will follow a path until the predator comes into range. When the predator is is range the prey will attack the predator by shooting at it. It only shoots at the predator if it is inside the field of view. The predator will get close to the prey, but will flee from the prey if the prey attacks it. You can use colliders and then disable and enable certain behaviours to implement the simulation.
+
+[![YouTube](http://img.youtube.com/vi/SqThPN_ogJE/0.jpg)](https://www.youtube.com/watch?v=SqThPN_ogJE)
+
+## Part 2
+
+Do some work on your assignment!
+
 ## Week 3 - Pursue, Offset pursue & formations.
 - get some art assets to use in your assignment
 - Refactor the code we have been writing to use components
+
+### Lab
+- Learn how to refactor a big class that does many things into lots of smaller classes that do one thing each
 
 ### Task 1
 - Find some 3D models & art assets for your assignment & get them loaded into a scene in Unity
