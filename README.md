@@ -24,6 +24,28 @@
 
 ## Week 4 - Wandering behaviours
 
+Previous lab tests:
+
+- https://github.com/skooter500/GE2-LabTest2-2017
+
+- https://github.com/skooter500/GE2-2017-Lab-Test
+
+- https://github.com/skooter500/GE2-Labtest1-2018
+
+Wandering behaviour examples:
+
+[![YouTube](http://img.youtube.com/vi/qmtxqCU1X5Q/0.jpg)](https://www.youtube.com/watch?v=qmtxqCU1X5Q)
+
+[![YouTube](http://img.youtube.com/vi/GW2K20ZhRW8/0.jpg)](https://www.youtube.com/watch?v=GW2K20ZhRW8)
+
+[![YouTube](http://img.youtube.com/vi/ntDDkmhF5NY/0.jpg)](https://www.youtube.com/watch?v=ntDDkmhF5NY)
+
+- JitterWander
+- Harmonic
+- Noise Wander
+
+
+
 # Lab
 
 Clone the repository for the course and create a seperate branch for your work today
