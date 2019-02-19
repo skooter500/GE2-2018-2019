@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 194632621}
   - component: {fileID: 194632620}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: jitterWanderBoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,6 +145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d6544bfb076a14ab48e7d075564ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  distance: 15
+  radius: 10
+  jitter: 100
 --- !u!114 &194632621
 MonoBehaviour:
   m_ObjectHideFlags: 0
