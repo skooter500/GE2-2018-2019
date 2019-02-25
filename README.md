@@ -18,8 +18,8 @@
 - [2017-2018](https://github.com/skooter500/GE2-2017-2018)
 	
 ## Assessment Schedule	
-- Week 4 - CA proposal & Git repo - 10%
-- Week 10 - Lab Test - 20%
+- Week 8 - CA proposal & Git repo - 10%
+- Week 9 - Lab Test - 20%
 - Week 12 - CA Submission & Demo - 40%
 
 ## Week 4 - Wandering behaviours
@@ -43,8 +43,6 @@ Wandering behaviour examples:
 - JitterWander
 - Harmonic
 - Noise Wander
-
-
 
 # Lab
 
