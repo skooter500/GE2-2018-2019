@@ -53,7 +53,12 @@ public class Harmonic : SteeringBehaviour
             target.y = 0;
             rot.z = 0;
         }
-
+        else
+        {
+            target.y = Mathf.Sin(angle);
+            target.z = Mathf.Cos(angle);
+            target.x = 0;
+        }
         target *= radius;
         Vector3 localTarget = target + (Vector3.forward * distance);
         worldTarget = transform.position + Quaternion.Euler(rot) * localTarget;

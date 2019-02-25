@@ -22,6 +22,24 @@
 - Week 9 - Lab Test - 20%
 - Week 12 - CA Submission & Demo - 40%
 
+##  Week 5 - More wandering behaviours & Obstacle Avoidance
+
+### Lab
+### Learning Outcomes
+- Know how the harmoinc steerin behaviour works
+- Program a procedural creature animation
+
+### Part 1
+
+- Add code to the harmonic steering behaviour to implement a vertical harmonic motion. 
+- Use the spine animator with the harmonic steering behaviour to program this procedural creature animation:
+
+[![YouTube](http://img.youtube.com/vi/B6sp6D-9O5o/0.jpg)](https://www.youtube.com/watch?v=B6sp6D-9O5o)
+
+### Part 2
+
+Work on your assignment
+
 ## Week 4 - Wandering behaviours
 
 Previous lab tests:
