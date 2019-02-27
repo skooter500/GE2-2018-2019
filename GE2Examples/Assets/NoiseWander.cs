@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Harmonic : SteeringBehaviour
+public class NoiseWander : SteeringBehaviour
 {
     public float frequency = 0.3f;
     public float radius = 10.0f;
@@ -11,7 +11,7 @@ public class Harmonic : SteeringBehaviour
     public float amplitude = 80;
     public float distance = 5;
 
-    public enum Axis { Horizontal, Vertical};
+    public enum Axis { Horizontal, Vertical };
 
     public Axis axis = Axis.Horizontal;
 
@@ -40,7 +40,7 @@ public class Harmonic : SteeringBehaviour
     // Update is called once per frame
     public override Vector3 Calculate()
     {
-        float n = Mathf.Sin(theta);
+        float n = (Mathf.PerlinNoise(theta, 1) * 2) - 1;
         float angle = n * amplitude * Mathf.Deg2Rad;
 
         Vector3 rot = transform.rotation.eulerAngles;
