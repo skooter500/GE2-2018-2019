@@ -35,3 +35,14 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+Assets/Plugins/
+Assets/GoogleVR/
+Assets/LeapMotion/
+SteamVR
+Oculus
+Assets/Oculus.meta
+Standard Assets
+Assets/SteamVR.meta
+PostProcessing
+
