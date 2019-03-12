@@ -13,8 +13,8 @@ public class OffsetPursue : SteeringBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // There is a bug here!!
         offset = transform.position - leader.transform.position;
+        offset = Quaternion.Inverse(leader.transform.rotation) * offset;
     }
 
     public override Vector3 Calculate()
