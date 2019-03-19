@@ -22,7 +22,14 @@
 - Week 9 - Lab Test - 20%
 - Week 12 - CA Submission & Demo - 40%
 
-##  Week 5 - More wandering behaviours & Obstacle Avoidance
+## Week 8 - Finite State Machines
+- [Using ScriptableObjects & the delegate pattern toi make pluggable AI](https://unity3d.com/learn/tutorials/topics/navigation/finite-state-ai-delegate-pattern)
+
+## Week 7 - Obstacle Avoidance
+
+## Week 6 - VR steering wheel controller
+
+## Week 5 - More wandering behaviours
 
 ### Lab
 ### Learning Outcomes
