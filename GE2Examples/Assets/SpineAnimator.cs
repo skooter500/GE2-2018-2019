@@ -9,9 +9,7 @@ public class SpineAnimator : MonoBehaviour {
     public float angularBondDamping = 25;
 
     private List<Vector3> offsets = new List<Vector3>();
-
-
-
+    
     // Use this for initialization
     void Start () {
         if (bones != null)

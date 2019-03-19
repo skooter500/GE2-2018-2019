@@ -51,10 +51,9 @@ public class SteeringWheelControl : MonoBehaviour
     
     public void OnTriggerStay(Collider target)
 	{
-        if(target.tag == "Hand") //when hands enter the steering wheel collider
+        if(target.tag == "Hand") 
 		{
-            // Replace with button handling code!!
-            if (true)
+            if (CheckButton())
             {
                 if (!held)
                 {
@@ -66,13 +65,11 @@ public class SteeringWheelControl : MonoBehaviour
                     
                     Vector3 grabPoint = CalculateGrabPoint();
                     
-                    // Calculate the angle
                     Vector3 from = grabPoint - transform.position;
                     Vector3 to = oldGrabPoint - transform.position;
                     float angle = Vector3.Angle(from, to);
 
-                    // Calculate the direction, positive or negative
-                    Vector3 up1 = Vector3.Cross(from, to); // This will be an up or down vector
+                    Vector3 up1 = Vector3.Cross(from, to); 
                     float dot = Vector3.Dot(transform.up, up1);
                     if (dot > 0)
                     {
