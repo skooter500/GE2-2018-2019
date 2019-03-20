@@ -23,9 +23,11 @@
 - Week 12 - CA Submission & Demo - 40%
 
 ## Week 8 - Finite State Machines
-- [Using ScriptableObjects & the delegate pattern toi make pluggable AI](https://unity3d.com/learn/tutorials/topics/navigation/finite-state-ai-delegate-pattern)
+- [Using ScriptableObjects & the delegate pattern to make pluggable AI](https://unity3d.com/learn/tutorials/topics/navigation/finite-state-ai-delegate-pattern)
+- Check out Predator, Prey Scene
 
 ## Week 7 - Obstacle Avoidance
+- Check out Avoidance scene
 
 ## Week 6 - VR steering wheel controller
 
@@ -33,7 +35,7 @@
 
 ### Lab
 ### Learning Outcomes
-- Know how the harmoinc steerin behaviour works
+- Know how the harmoinc steering behaviour works
 - Program a procedural creature animation
 
 ### Part 1
