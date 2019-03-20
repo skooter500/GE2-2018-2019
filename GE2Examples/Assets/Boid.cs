@@ -28,10 +28,7 @@ public class Boid : MonoBehaviour
 
         foreach (SteeringBehaviour b in behaviours)
         {
-            if (b.isActiveAndEnabled)
-            {
-                this.behaviours.Add(b);
-            }
+            this.behaviours.Add(b);            
         }
     }
 
