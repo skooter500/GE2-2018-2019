@@ -12,6 +12,16 @@ public struct Sway : IComponentData
     public float theta;
 }
 
+class A
+{
+    public float a;
+}
+
+struct B
+{
+    public float b;
+}
+
 public class Bootstrap : MonoBehaviour
 {
     private EntityArchetype swayArchitype;
@@ -25,6 +35,8 @@ public class Bootstrap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         entityManager = World.Active.GetOrCreateManager<EntityManager>();
 
         swayArchitype = entityManager.CreateArchetype(typeof(Position), typeof(Rotation), typeof(Sway));
