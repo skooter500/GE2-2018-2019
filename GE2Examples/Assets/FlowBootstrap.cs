@@ -21,6 +21,10 @@ public class FlowBootstrap : MonoBehaviour
 
     public float noiseScale = 0.1f;
 
+    public float lower = 0.5f;
+    public float upper = 1.0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,27 +35,30 @@ public class FlowBootstrap : MonoBehaviour
         renderMesh = new RenderMesh();
         renderMesh.mesh = mesh;
         renderMesh.material = material;
-
-        for(int row = -radius; row < radius; row ++)
+    
+        for (int slice = -radius; slice < radius; slice ++)
         {
-            for (int col = -radius; col < radius; col ++)
+            for (int row = -radius; row < radius; row ++)
             {
-                Entity entity = entityManager.CreateEntity(flowArchitype);
-                Position p = new Position();
-                p.Value = new Vector3(row, 0, col);
-                entityManager.SetComponentData(entity, p);
+                for (int col = -radius; col < radius; col ++)
+                {
+                    Entity entity = entityManager.CreateEntity(flowArchitype);
+                    Position p = new Position();
+                    p.Value = new Vector3(row * 2, slice * 2, col * 2);
+                    entityManager.SetComponentData(entity, p);
 
-                Rotation r = new Rotation();
-                r.Value = Quaternion.identity;
-                entityManager.SetComponentData(entity, r);
+                    Rotation r = new Rotation();
+                    r.Value = Quaternion.identity;
+                    entityManager.SetComponentData(entity, r);
 
-                Scale s = new Scale();
-                s.Value = new Vector3(0.2f, 1, 1);
-                entityManager.SetComponentData(entity, s);
+                    Scale s = new Scale();
+                    s.Value = new Vector3(0.2f, 1, 1);
+                    entityManager.SetComponentData(entity, s);
 
-                entityManager.SetComponentData(entity, new Flow());
+                    entityManager.SetComponentData(entity, new Flow());
 
-                entityManager.AddSharedComponentData(entity, renderMesh);
+                    entityManager.AddSharedComponentData(entity, renderMesh);
+                }
             }
         }
     }
@@ -67,17 +74,46 @@ public struct FlowJob : IJobProcessComponentData<Position, Rotation, Scale, Flow
     public float noiseScale;
     public float dt;
     public float offset;
+    public float lower;
+    public float upper;
+
+    public static float Map(float value, float r1, float r2, float m1, float m2)
+    {
+        float dist = value - r1;
+        float range1 = r2 - r1;
+        float range2 = m2 - m1;
+        return m1 + ((dist / range1) * range2);
+    }
+
     public void Execute(ref Position p, ref Rotation r, ref Scale s, ref Flow c3)
     {
         //r.Value = Quaternion.AngleAxis(Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 360, Vector3.up);
         s.Value = new Vector3(0.2f, Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 10, 0.2f);
+
+        float scale = Map(Perlin.Noise((p.Value.x + offset) * noiseScale, (p.Value.y + offset) * noiseScale, (p.Value.z + offset) * noiseScale), -1, 1, lower, upper);
+
+        s.Value = new Vector3(
+            scale
+            , scale
+            , scale
+            );
     }
 }
 
+class YourBarrier
+{
+}
+
+
 public class FlowSystem : JobComponentSystem
 {
+
+    
     FlowBootstrap fb;
     float offset;
+
+    //[Inject] private YourBarrier barrier;
+
     protected override void OnCreateManager()
     {
         base.OnCreateManager();
@@ -90,6 +126,8 @@ public class FlowSystem : JobComponentSystem
         {
             dt = Time.deltaTime
             , noiseScale = fb.noiseScale
+            , lower = fb.lower
+            , upper = fb.upper
             , offset = this.offset
         };
 
