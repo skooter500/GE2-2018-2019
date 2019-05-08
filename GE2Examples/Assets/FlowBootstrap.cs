@@ -69,8 +69,9 @@ public struct FlowJob : IJobProcessComponentData<Position, Rotation, Scale, Flow
     public float offset;
     public void Execute(ref Position p, ref Rotation r, ref Scale s, ref Flow c3)
     {
-        //r.Value = Quaternion.AngleAxis(Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 360, Vector3.up);
-        s.Value = new Vector3(0.2f, Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 10, 0.2f);
+        float n = Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale);
+        r.Value = Quaternion.AngleAxis(n * 360, Vector3.up);
+        s.Value = new Vector3(n,  n * 2, n);
     }
 }
 
@@ -82,6 +83,7 @@ public class FlowSystem : JobComponentSystem
     {
         base.OnCreateManager();
         fb = GameObject.FindObjectOfType<FlowBootstrap>();
+        Enabled = false;
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
