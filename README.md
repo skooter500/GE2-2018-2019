@@ -18,9 +18,9 @@
 - [2017-2018](https://github.com/skooter500/GE2-2017-2018)
 	
 ## Assessment Schedule	
-- Week 8 - CA proposal & Git repo - 10%
+- Week 8 - CA proposal & Git repo
 - Week 9 - Lab Test - 20%
-- Week 12 - CA Submission & Demo - 40%
+- Week 12 - CA Submission & Demo - 50%
 
 ## Week 8 - Finite State Machines
 - [Using ScriptableObjects & the delegate pattern to make pluggable AI](https://unity3d.com/learn/tutorials/topics/navigation/finite-state-ai-delegate-pattern)
