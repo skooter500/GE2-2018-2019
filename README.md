@@ -22,6 +22,14 @@
 - Week 9 - Lab Test - 20%
 - Week 12 - CA Submission & Demo - 40%
 
+## Week 11 - More on ECS
+- Check out the ECS examples in the project
+
+## Week 10 - Entity Component System
+- Check out [this project](https://github.com/skooter500/ECSBoids)
+
+## Week 9 - Flocking behaviours
+
 ## Week 8 - Finite State Machines
 - [Using ScriptableObjects & the delegate pattern to make pluggable AI](https://unity3d.com/learn/tutorials/topics/navigation/finite-state-ai-delegate-pattern)
 - Check out Predator, Prey Scene
