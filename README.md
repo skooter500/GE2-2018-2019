@@ -1,6 +1,6 @@
 # Game Engines 2 2018-2019
 
-[![Video](http://img.youtube.com/vi/NR-zxfT0fTk/0.jpg)](http://www.youtube.com/watch?NR-zxfT0fTk)
+[![Video](http://img.youtube.com/vi/NMDupdv85FE/0.jpg)](http://www.youtube.com/watch?NMDupdv85FE)
 
 ## Resources
 - [Class Facebook page](https://www.facebook.com/groups/2228012700814097/)
@@ -22,13 +22,18 @@
 - Week 9 - Lab Test - 20%
 - Week 12 - CA Submission & Demo - 50%
 
-## Week 11 - More on ECS
+## Week 11 - More on ECS - Perlin Noise Flow Field
 - Check out the ECS examples in the project
 
 ## Week 10 - Entity Component System
 - Check out [this project](https://github.com/skooter500/ECSBoids)
 
+[![Video](http://img.youtube.com/vi/oRKOXqGkqHA/0.jpg)](http://www.youtube.com/watch?oRKOXqGkqHA)
+
 ## Week 9 - Flocking behaviours
+- Seperation
+- Cohesion
+- Alignment
 
 ## Week 8 - Finite State Machines
 - [Using ScriptableObjects & the delegate pattern to make pluggable AI](https://unity3d.com/learn/tutorials/topics/navigation/finite-state-ai-delegate-pattern)
@@ -36,6 +41,20 @@
 
 ## Week 7 - Obstacle Avoidance
 - Check out Avoidance scene
+- How are the feelers calculated?
+- What direction do they point?
+- How many are there? Whys this number?
+- How does the behaviour handle holes in the colliders?
+- Does the speed of the boid matter?
+- What direction is the force generated?
+- WHat alternatives are there to this?
+- How does the behaviour avoid certain obstacles while ignoring others?
+- How often are the feelers calculated and why?
+- How does the behaviour take priority over other behaviours?
+- How would you improve the behaviour?
+- How does it differ from Craig Reynolds avoidance behaviours?
+
+![Image](https://github.com/skooter500/GE2-2017-2018/raw/master/images/IMAG0190.jpg)
 
 ## Week 6 - VR steering wheel controller
 
