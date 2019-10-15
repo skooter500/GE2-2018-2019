@@ -146,8 +146,8 @@ MonoBehaviour:
   speed: 2
   radius: 5
   noiseScale: 0.1
-  lower: -10
-  upper: 10
+  lower: -3
+  upper: 3
 --- !u!4 &1717291162
 Transform:
   m_ObjectHideFlags: 0

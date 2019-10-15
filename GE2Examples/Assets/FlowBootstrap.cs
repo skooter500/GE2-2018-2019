@@ -35,12 +35,12 @@ public class FlowBootstrap : MonoBehaviour
         renderMesh = new RenderMesh();
         renderMesh.mesh = mesh;
         renderMesh.material = material;
-    
-        for (int slice = -radius; slice < radius; slice ++)
+
+        for (int slice = -radius; slice < radius; slice++)
         {
-            for (int row = -radius; row < radius; row ++)
+            for (int row = -radius; row < radius; row++)
             {
-                for (int col = -radius; col < radius; col ++)
+                for (int col = -radius; col < radius; col++)
                 {
                     Entity entity = entityManager.CreateEntity(flowArchitype);
                     Position p = new Position();
@@ -52,7 +52,7 @@ public class FlowBootstrap : MonoBehaviour
                     entityManager.SetComponentData(entity, r);
 
                     Scale s = new Scale();
-                    s.Value = new Vector3(1, 1, 1);
+                    s.Value = new Vector3(0.2f, 1, 1);
                     entityManager.SetComponentData(entity, s);
 
                     entityManager.SetComponentData(entity, new Flow());
@@ -64,7 +64,7 @@ public class FlowBootstrap : MonoBehaviour
     }
 }
 
-public struct Flow:IComponentData
+public struct Flow : IComponentData
 {
     int Value;
 }
@@ -87,13 +87,9 @@ public struct NoiseJob : IJobProcessComponentData<Position, Rotation, Scale, Flo
 
     public void Execute(ref Position p, ref Rotation r, ref Scale s, ref Flow c3)
     {
-        /*float n = Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale);
-        r.Value = Quaternion.AngleAxis(n * 360, Vector3.up);
-        s.Value = new Vector3(n,  n * 2, n);
-        */
         //r.Value = Quaternion.AngleAxis(Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 360, Vector3.up);
-        //s.Value = new Vector3(0.2f, Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 10, 0.2f);
-
+        s.Value = new Vector3(0.2f, Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 10, 0.2f);
+        
         float scale = Map(Perlin.Noise((p.Value.x + offset) * noiseScale, (p.Value.y + offset) * noiseScale, (p.Value.z + offset) * noiseScale), -1, 1, lower, upper);
 
         s.Value = new Vector3(
@@ -109,12 +105,11 @@ public class FlowSystem : JobComponentSystem
     FlowBootstrap fb;
     float offset;
 
-    
+
     protected override void OnCreateManager()
     {
         base.OnCreateManager();
         fb = GameObject.FindObjectOfType<FlowBootstrap>();
-        Enabled = false;
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
@@ -122,10 +117,14 @@ public class FlowSystem : JobComponentSystem
         var nj = new NoiseJob()
         {
             dt = Time.deltaTime
-            , noiseScale = fb.noiseScale
-            , lower = fb.lower
-            , upper = fb.upper
-            , offset = this.offset
+            ,
+            noiseScale = fb.noiseScale
+            ,
+            lower = fb.lower
+            ,
+            upper = fb.upper
+            ,
+            offset = this.offset
         };
 
         offset += Time.deltaTime * fb.speed;
