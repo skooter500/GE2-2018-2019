@@ -69,7 +69,7 @@ public struct Flow:IComponentData
     int Value;
 }
 
-public struct FlowJob : IJobProcessComponentData<Position, Rotation, Scale, Flow>
+public struct NoiseJob : IJobProcessComponentData<Position, Rotation, Scale, Flow>
 {
     public float noiseScale;
     public float dt;
@@ -87,7 +87,7 @@ public struct FlowJob : IJobProcessComponentData<Position, Rotation, Scale, Flow
 
     public void Execute(ref Position p, ref Rotation r, ref Scale s, ref Flow c3)
     {
-        //r.Value = Quaternion.AngleAxis(Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 360, Vector3.up);
+        r.Value = Quaternion.AngleAxis(Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 360, Vector3.up);
         s.Value = new Vector3(0.2f, Mathf.PerlinNoise((p.Value.x + offset) * noiseScale, (p.Value.z + offset) * noiseScale) * 10, 0.2f);
 
         float scale = Map(Perlin.Noise((p.Value.x + offset) * noiseScale, (p.Value.y + offset) * noiseScale, (p.Value.z + offset) * noiseScale), -1, 1, lower, upper);
@@ -100,20 +100,12 @@ public struct FlowJob : IJobProcessComponentData<Position, Rotation, Scale, Flow
     }
 }
 
-class YourBarrier
-{
-}
-
-
 public class FlowSystem : JobComponentSystem
 {
-
-    
     FlowBootstrap fb;
     float offset;
 
-    //[Inject] private YourBarrier barrier;
-
+    
     protected override void OnCreateManager()
     {
         base.OnCreateManager();
@@ -122,7 +114,7 @@ public class FlowSystem : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
 
-        var fj = new FlowJob()
+        var nj = new NoiseJob()
         {
             dt = Time.deltaTime
             , noiseScale = fb.noiseScale
@@ -132,6 +124,6 @@ public class FlowSystem : JobComponentSystem
         };
 
         offset += Time.deltaTime * fb.speed;
-        return fj.Schedule(this, inputDeps);
+        return nj.Schedule(this, inputDeps);
     }
 }

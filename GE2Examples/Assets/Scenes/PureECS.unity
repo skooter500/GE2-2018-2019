@@ -398,11 +398,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163725789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf58ae61507a1d34996afa79900c819a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3df05f6c75edc6043a3d7e0a9f6c42d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: fd905d0bb3075f0428b28828636bdc42, type: 2}
+  speed: 1
+  radius: 10
+  noiseScale: 0.1
+  lower: 0.5
+  upper: 1
 --- !u!4 &1163725791
 Transform:
   m_ObjectHideFlags: 0
