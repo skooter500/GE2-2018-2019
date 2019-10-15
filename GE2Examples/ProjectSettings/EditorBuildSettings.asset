@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/FlowField.unity
+    guid: ba59f1e15ac70f24a94d0b1c9497be84
   m_configObjects: {}

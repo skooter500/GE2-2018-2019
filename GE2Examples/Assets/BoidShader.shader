@@ -11,6 +11,12 @@ Shader "Custom/Boid" {
 	SubShader {
 		Tags {"Queue" = "Transparent" "RenderType"="Transparent" }
 		LOD 200
+
+		// extra pass that renders to depth buffer only
+	Pass {
+		ZWrite On
+		ColorMask 0
+	}
 		
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
@@ -61,7 +67,7 @@ Shader "Custom/Boid" {
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			// Albedo comes from a texture tinted by color
-			float hue = abs((IN.worldPos.x + IN.worldPos.z) / _PositionScale) % 1.0;
+			float hue = abs((IN.worldPos.x + IN.worldPos.z + _Offset) / _PositionScale) % 1.0;
 			fixed3 c = hsv_to_rgb(float3(hue, 1, 1));
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
