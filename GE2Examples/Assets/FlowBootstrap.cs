@@ -28,6 +28,8 @@ public class FlowBootstrap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FlowSystem.Instance.fb = this;
+        FlowSystem.Instance.Enabled = true;
         entityManager = World.Active.GetOrCreateManager<EntityManager>();
 
         flowArchitype = entityManager.CreateArchetype(typeof(Position), typeof(Rotation), typeof(Scale), typeof(Flow));
@@ -102,14 +104,17 @@ public struct NoiseJob : IJobProcessComponentData<Position, Rotation, Scale, Flo
 
 public class FlowSystem : JobComponentSystem
 {
-    FlowBootstrap fb;
+    public FlowBootstrap fb;
     float offset;
+    public static FlowSystem Instance;
 
 
     protected override void OnCreateManager()
     {
         base.OnCreateManager();
+        Instance = this;        
         fb = GameObject.FindObjectOfType<FlowBootstrap>();
+        Enabled = false;
     }
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {

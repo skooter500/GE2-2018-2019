@@ -76,6 +76,7 @@ public struct SwayJob : IJobProcessComponentData<Position, Rotation, Sway>
     {
         r.Value = Quaternion.AngleAxis(Mathf.Sin(s.theta) * amplitude, Vector3.right);
         s.theta += Mathf.PI * 2.0f * frequency * timeDelta;
+
     }
 }
 
@@ -93,3 +94,4 @@ public class SwaySystem : JobComponentSystem
         return sj.Schedule(this, inputDeps);
     }
 }
+
