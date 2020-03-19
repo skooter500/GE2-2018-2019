@@ -144,10 +144,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: fd905d0bb3075f0428b28828636bdc42, type: 2}
   speed: 2
-  radius: 5
+  radius: 10
   noiseScale: 0.1
-  lower: -3
-  upper: 3
+  lower: -5
+  upper: 5
 --- !u!4 &1717291162
 Transform:
   m_ObjectHideFlags: 0

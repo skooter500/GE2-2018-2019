@@ -38,6 +38,7 @@ public class JitterWander : SteeringBehaviour
         target += disp;
         target.Normalize();
         target *= radius;
+        
 
         Vector3 localTarget = (Vector3.forward * distance) + target;
 
